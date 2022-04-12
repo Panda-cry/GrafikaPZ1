@@ -1,0 +1,35 @@
+﻿<Window x:Class="Grafika.TextChange"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Grafika" xmlns:xctk1="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="TextChange" Height="150" Width="300">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Label}">
+                    <Setter Property="Margin" Value="0,7,0,0"/>
+                </Style>
+            </StackPanel.Resources>
+            <Label Content="Foreground : "/>
+            <Label Content="Background :"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type xctk1:ColorPicker}">
+                    <Setter Property="Margin" Value="0,10,0,0"/>
+                </Style>
+            </StackPanel.Resources>
+            <xctk1:ColorPicker x:Name="foreground" />
+            <xctk1:ColorPicker x:Name="background"  />
+        </StackPanel>
+        <Button Grid.Column="1" Width="100" Height="25" Content="Create" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Button_Click"/>
+    </Grid>
+</Window>

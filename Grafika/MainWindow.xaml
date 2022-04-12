@@ -1,0 +1,53 @@
+﻿<Window x:Class="Grafika.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Grafika"
+        mc:Ignorable="d"
+        Title="Grafika" Height="450" Width="800">
+
+    <!--<Canvas Name="canvas" Width="10000" Height="10000" >
+
+        
+    </Canvas>-->
+    <DockPanel>
+
+        <DockPanel Height="20" Width="auto"  DockPanel.Dock="Top">
+            <Menu>
+                <MenuItem Header="Draw Ellipse"  IsEnabled="True" IsCheckable="True" Checked="_ellipse_Checked" Name="_ellipse" ></MenuItem>
+                <Separator/>
+                <MenuItem Header="Draw Polygon"  IsEnabled="True" IsCheckable="True" Checked="_polygon_Checked" Name="_polygon"></MenuItem>
+                <Separator/>
+                <MenuItem Header="Add Text" IsEnabled="True" IsCheckable="True" Checked="_text_Checked" Name="_text"></MenuItem>
+                <Separator/>
+                <MenuItem Header="Undo" Click="Undo" IsEnabled="True" Name="_undo"></MenuItem>
+                <Separator/>
+                <MenuItem Header="Redo" Click="Redo" IsEnabled="True" Name="_redo"></MenuItem>
+                <Separator/>
+                <MenuItem Header="Clear" Click="Clear" IsEnabled="True" Name="_clear"></MenuItem>
+                <Separator/>
+                <MenuItem Header="Coordinates" Name="_coordinates" IsCheckable="True"></MenuItem>
+                <Separator/>
+                <TextBox Visibility="Hidden" Width="60" Name="coordinates" IsReadOnly="True"></TextBox>
+            </Menu>
+        </DockPanel>
+
+        <Slider x:Name="slider" Minimum=".1" Maximum="5" Value="0.3" Height="20"  DockPanel.Dock="Top"/>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+
+            <Canvas Background="AliceBlue" Width="10000" Height="10000" x:Name="canvas" Loaded="canvas_Loaded" VerticalAlignment="Center" HorizontalAlignment="Center"  MouseLeftButtonDown="Window_MouseLeftButtonDown" MouseRightButtonDown="Window_MouseRightButtonDown">
+                <Canvas.LayoutTransform>
+                    <ScaleTransform ScaleX="{Binding ElementName=slider, Path=Value}"
+                                ScaleY="{Binding ElementName=slider, Path=Value}"/>
+
+                </Canvas.LayoutTransform>
+
+
+            </Canvas>
+
+
+        </ScrollViewer>
+
+    </DockPanel>
+</Window>
