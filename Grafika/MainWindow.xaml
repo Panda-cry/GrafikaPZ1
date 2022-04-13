@@ -27,9 +27,9 @@
                 <Separator/>
                 <MenuItem Header="Clear" Click="Clear" IsEnabled="True" Name="_clear"></MenuItem>
                 <Separator/>
-                <MenuItem Header="Coordinates" Name="_coordinates" IsCheckable="True"></MenuItem>
+                <MenuItem Header="Coordinates" Name="_coordinates" IsCheckable="False"></MenuItem>
                 <Separator/>
-                <TextBox Visibility="Hidden" Width="60" Name="coordinates" IsReadOnly="True"></TextBox>
+                <TextBox Visibility="Hidden" Width="100" Name="coordinates" IsReadOnly="True"></TextBox>
             </Menu>
         </DockPanel>
 

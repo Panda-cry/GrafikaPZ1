@@ -162,11 +162,12 @@ namespace Grafika
             {
                 ellipse.StrokeThickness = ellipseChangeModel.StrokeThickess;
             }
+            int indexGrid = canvas.Children.IndexOf(grid);
             canvas.Children.Remove(grid);
             grid.Children.Remove((Ellipse)sender);
             //Maybe we have textbox so we wont to override that 
             grid.Children.Insert(0,ellipse);
-            canvas.Children.Add(grid);
+            canvas.Children.Insert(indexGrid,grid);
         }
 
       
@@ -263,12 +264,13 @@ namespace Grafika
             {
                 polygon.StrokeThickness = polyghonChangeModle.StrokThic;
             }
-            
+
+            int indexGrid = canvas.Children.IndexOf(grid);
             canvas.Children.Remove(grid);
             grid.Children.Remove((Polygon)sender);
             //Maybe we have textbox so we wont to override that 
             grid.Children.Insert(0, polygon);
-            canvas.Children.Add(grid);
+            canvas.Children.Insert(indexGrid,grid);
         }
         #endregion
 
@@ -738,10 +740,25 @@ namespace Grafika
                     continue;
                 if (pp.Points.Count == 2 && line.Points.Count == 2)
                 {
-                    //if (doIntersect(pp.Points[0], pp.Points[1], line.Points[0], line.Points[1]).Equals(Intersception.Collinear))
-                    //{
-
-                    //}
+                    if (doIntersect(pp.Points[0], pp.Points[1], line.Points[0], line.Points[1]).Equals(Intersception.Collinear))
+                    {
+                        if (pp.Points[0].Y == line.Points[0].Y)
+                        {
+                            Point pointt = new Point(line.Points[1].X, line.Points[1].Y);
+                            line.Points.Remove(pointt);
+                            line.Points.Add(new Point(line.Points[0].X, line.Points[0].Y - 10));
+                            line.Points.Add(new Point(pointt.X, line.Points[0].Y - 10));
+                            line.Points.Add(pointt);
+                        }
+                        else
+                        {
+                            Point pointt = new Point(line.Points[1].X, line.Points[1].Y);
+                            line.Points.Remove(pointt);
+                            line.Points.Add(new Point(line.Points[0].X + 10, line.Points[0].Y));
+                            line.Points.Add(new Point(line.Points[0].X + 10, pointt.Y));
+                            line.Points.Add(pointt);
+                        }
+                    }
                     if (doIntersect(pp.Points[0], pp.Points[1], line.Points[0], line.Points[1]).Equals(Intersception.Yes))
                     {
                         Point inter = Interscept(pp.Points[0], pp.Points[1], line.Points[0], line.Points[1]);
@@ -760,12 +777,23 @@ namespace Grafika
                 }
                 if (pp.Points.Count == 2 && line.Points.Count == 3)
                 {
-                    //if (doIntersect(pp.Points[0], pp.Points[1], line.Points[0], line.Points[1]).Equals(Intersception.Collinear))
-                    //{
-                    //    coll = true;
-                    //    counter++;
-                    //    break;
-                    //}
+                    if (doIntersect(pp.Points[0], pp.Points[1], line.Points[0], line.Points[1]).Equals(Intersception.Collinear))
+                    {
+                        if (pp.Points[0].Y > line.Points[0].Y)
+                        {
+                         
+                            //line.Points.Insert(1,new Point(line.Points[0].X, line.Points[0].Y - 10));
+                            //line.Points.Insert(2,new Point(pp.Points[0].X + 10, line.Points[0].Y - 10));
+                            //line.Points.Insert(3,new Point(pp.Points[0].X + 10, line.Points[3].Y));
+                            //line.Stroke = Brushes.Black;
+                        }
+                        else
+                        {
+                            //line.Points[1] = new Point(line.Points[0].X, line.Points[2].Y);
+                        }
+                        
+                  
+                    }
                     if (doIntersect(pp.Points[0], pp.Points[1], line.Points[0], line.Points[1]).Equals(Intersception.Yes))
                     {
                         Point inter = Interscept(pp.Points[0], pp.Points[1], line.Points[0], line.Points[1]);
@@ -778,12 +806,11 @@ namespace Grafika
 
                         canvas.Children.Add(rectangle);
                     }
-                    //if (doIntersect(pp.Points[0], pp.Points[1], line.Points[1], line.Points[2]).Equals(Intersception.Collinear))
-                    //{
-                    //    coll = true;
-                    //    counter++;
-                    //    break;
-                    //}
+                    if (doIntersect(pp.Points[0], pp.Points[1], line.Points[1], line.Points[2]).Equals(Intersception.Collinear))
+                    {
+                        //line.StrokeThickness = 30;
+                     
+                    }
                     if (doIntersect(pp.Points[0], pp.Points[1], line.Points[1], line.Points[2]).Equals(Intersception.Yes))
                     {
                         Point inter = Interscept(pp.Points[0], pp.Points[1], line.Points[1], line.Points[2]);
