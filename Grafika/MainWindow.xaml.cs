@@ -414,6 +414,9 @@ namespace Grafika
 
         #region MAP !!!
 
+        Dictionary<KeyValuePair<int, int>, UIElement> elementss = new Dictionary<KeyValuePair<int, int>, UIElement>();
+        int[,] array = new int[10000, 10000];
+
         public enum Intersception { Yes, No, Collinear };
         public enum Element { Switch, Node, Substation };
 
@@ -1182,10 +1185,10 @@ namespace Grafika
         #region Calculating
         private void Calculate(UIElement element, long id)
         {
-            double broj = noviY;
+            double broj = noviX;
             if (broj < 100)
             {
-                noviY *= 10;
+                noviX *= 10;
             }
             if (broj >= 100 && broj < 200)
             {
@@ -1263,15 +1266,78 @@ namespace Grafika
             {
                 noviY *= 10;
             }
-            if (broj >= 900 && broj <= 1000)
+            if (broj >= 900 && broj < 1000)
             {
                 noviY *= 10;
             }
+
+            dicitonary.Add(element, new Point(noviY, noviX));
+            container.Add(id, new Point(noviY, 10000 - noviX)); 
+
+            if (array[(int)noviX, (int)noviY] == 1)
+            {
+                AddNear();
+            }
+            array[(int)noviX, (int)noviY] = 1;
+            elementss.Add(new KeyValuePair<int, int>((int)noviX, (int)noviY), element);
             Canvas.SetLeft(element, noviY);
             Canvas.SetBottom(element, noviX);
-            dicitonary.Add(element, new Point(noviY, noviX));
-            container.Add(id, new Point(noviY, 10000 - noviX));
             canvas.Children.Add(element);
+        }
+        private void AddNear()
+        {
+            int count = 0;
+            while (array[(int)noviX, (int)noviY] == 1)
+            {
+                count %= 8;
+                switch (count)
+                {
+                    case 0:
+                        {
+                            noviX += 30;
+                            break;
+                        }
+                    case 1:
+                        {
+                            noviY += 30;
+                            break;
+                        }
+                    case 2:
+                        {
+                            noviX -= 30;
+                            break;
+                        }
+                    case 3:
+                        {
+                            noviX -= 30;
+                            break;
+                        }
+
+                    case 4:
+                        {
+                            noviY -= 30;
+                            break;
+                        }
+                    case 5:
+                        {
+                            noviY -= 30;
+                            break;
+                        }
+                    case 6:
+                        {
+
+                            noviY -= 30;
+                            break;
+                        }
+                    case 7:
+                        {
+                            noviX += 30;
+                            break;
+                        }
+
+                }
+                count++;
+            }
         }
         #endregion
         #endregion
