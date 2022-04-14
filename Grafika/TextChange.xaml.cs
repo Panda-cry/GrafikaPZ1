@@ -27,7 +27,7 @@ namespace Grafika
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            TextChangeModel model = new TextChangeModel();
+            TextChangeModel model = new TextChangeModel() { Foregroung = Brushes.AliceBlue, Background = Brushes.Red};
             if(foreground.SelectedColor != null)
             {
                 model.Foregroung = new SolidColorBrush(foreground.SelectedColor.Value);

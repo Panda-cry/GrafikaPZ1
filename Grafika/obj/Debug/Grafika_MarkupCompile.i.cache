@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\petar\Desktop\Grafika\Projekat\Grafika\Grafika\obj\Debug\
+C:\Users\zorzp\OneDrive\Desktop\GrafikaPZ1\Grafika\obj\Debug\
 Grafika
 none
 false
 DEBUG;TRACE
-C:\Users\petar\Desktop\Grafika\Projekat\Grafika\Grafika\App.xaml
+C:\Users\zorzp\OneDrive\Desktop\GrafikaPZ1\Grafika\App.xaml
 71229017516
 
 241532638431
-18-841189219
+18-838502660
 AddText.xaml;DrawElipse.xaml;DrawPolygon.xaml;EllipseChange.xaml;MainWindow.xaml;PolyghonChange.xaml;TextChange.xaml;
 
-False
+True
 

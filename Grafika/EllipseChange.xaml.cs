@@ -27,7 +27,7 @@ namespace Grafika
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            EllipseChangeModel change = new EllipseChangeModel();
+            EllipseChangeModel change = new EllipseChangeModel() { StrokeFill = Brushes.Gray,StrokeThickess = 11,Fill = Brushes.Red};
             if(strokeColorPicker.SelectedColor != null)
             {
                 change.StrokeFill = new SolidColorBrush(strokeColorPicker.SelectedColor.Value);

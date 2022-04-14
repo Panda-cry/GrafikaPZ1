@@ -33,23 +33,56 @@ namespace Grafika
             {
                 model = new PolygonModel()
                 {
-                    StrokThic = strokeThickness.Value.Value,
-                    Fill = new SolidColorBrush(polygonColourPicker.SelectedColor.Value),
-                    StrokeFill = new SolidColorBrush(strokeColorPicker.SelectedColor.Value)
+                    StrokThic = 33,
+                    Fill = Brushes.Red,
+                    StrokeFill = Brushes.Blue
 
                 };
+
+                if (polygonColourPicker.SelectedColor != null)
+                {
+                    model.Fill = new SolidColorBrush(polygonColourPicker.SelectedColor.Value);
+                }
+                if (strokeColorPicker.SelectedColor != null)
+                {
+                    model.StrokeFill = new SolidColorBrush(strokeColorPicker.SelectedColor.Value);
+                }
+                if(strokeThickness.Value != null)
+                {
+                    model.StrokThic = strokeThickness.Value.Value;
+                }
             }
             else
             {
                 model = new PolygonModel()
                 {
-                    Text = polygonText.Text,
-                    TextColour = new SolidColorBrush(textColour.SelectedColor.Value),
-                    StrokThic = strokeThickness.Value.Value,
-                    Fill = new SolidColorBrush(polygonColourPicker.SelectedColor.Value),
-                    StrokeFill = new SolidColorBrush(strokeColorPicker.SelectedColor.Value)
+                    Text = "Neki Text",
+                    TextColour = Brushes.Blue,
+                    StrokThic = 33,
+                    Fill = Brushes.Red,
+                    StrokeFill = Brushes.Gray
 
                 };
+                if(polygonText.Text.Length != 0)
+                {
+                    model.Text = polygonText.Text;
+                }
+                if(textColour.SelectedColor != null)
+                {
+                    model.TextColour = new SolidColorBrush(textColour.SelectedColor.Value);
+                }
+                if (polygonColourPicker.SelectedColor != null)
+                {
+                    model.Fill = new SolidColorBrush(polygonColourPicker.SelectedColor.Value);
+                }
+                if (strokeColorPicker.SelectedColor != null)
+                {
+                    model.StrokeFill = new SolidColorBrush(strokeColorPicker.SelectedColor.Value);
+                }
+                if (strokeThickness.Value != null)
+                {
+                    model.StrokThic = strokeThickness.Value.Value;
+                }
             }
            
             MainWindow.polygonModel = model;

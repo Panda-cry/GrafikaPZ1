@@ -30,13 +30,59 @@ namespace Grafika
             EllipseModel models = null;
             if (textColour.SelectedColor==null && ellipseText.Text == "")
             {
-            models = new EllipseModel(width.Value.Value, height.Value.Value, strokeThickness.Value.Value,new SolidColorBrush(ellipseColourPicker.SelectedColor.Value), new SolidColorBrush(strokeColorPicker.SelectedColor.Value));
-               
+            models = new EllipseModel(333, 333, 33,Brushes.Red, Brushes.Blue);
+                if(width.Value != null)
+                {
+                    models.Width = width.Value.Value;
+                }
+                if (height.Value != null)
+                {
+                    models.Height = height.Value.Value;
+                }
+                if (strokeThickness.Value != null)
+                {
+                    models.StrokeThic = strokeThickness.Value.Value;
+                }
+                if (ellipseColourPicker.SelectedColor != null)
+                {
+                    models.Fill = new SolidColorBrush(ellipseColourPicker.SelectedColor.Value);
+                }
+                if (strokeColorPicker.SelectedColor != null)
+                {
+                    models.StrokeFill = new SolidColorBrush(strokeColorPicker.SelectedColor.Value);
+                }
             }
             else
             {
-             models= new EllipseModel(width.Value.Value, height.Value.Value, strokeThickness.Value.Value,new SolidColorBrush(ellipseColourPicker.SelectedColor.Value), new SolidColorBrush(strokeColorPicker.SelectedColor.Value),new SolidColorBrush(textColour.SelectedColor.Value),ellipseText.Text);
-              
+                models = new EllipseModel(333, 333, 33, Brushes.Red, Brushes.Blue,Brushes.Green , "Neki text");
+                if (width.Value != null)
+                {
+                    models.Width = width.Value.Value;
+                }
+                if (height.Value != null)
+                {
+                    models.Height = height.Value.Value;
+                }
+                if (strokeThickness.Value != null)
+                {
+                    models.StrokeThic = strokeThickness.Value.Value;
+                }
+                if (ellipseColourPicker.SelectedColor != null)
+                {
+                    models.Fill = new SolidColorBrush(ellipseColourPicker.SelectedColor.Value);
+                }
+                if (strokeColorPicker.SelectedColor != null)
+                {
+                    models.StrokeFill = new SolidColorBrush(strokeColorPicker.SelectedColor.Value);
+                }
+                if (textColour.SelectedColor != null)
+                {
+                    models.TextColour = new SolidColorBrush(textColour.SelectedColor.Value);
+                }
+                if (ellipseColourPicker.SelectedColor != null)
+                {
+                    models.Text = ellipseText.Text;
+                }
             }
             MainWindow.model = models;
             this.Close();

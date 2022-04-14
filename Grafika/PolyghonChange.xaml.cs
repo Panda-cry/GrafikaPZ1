@@ -27,7 +27,7 @@ namespace Grafika
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PolyghonChangeModel model = new PolyghonChangeModel();
+            PolyghonChangeModel model = new PolyghonChangeModel() { StrokeFill = Brushes.Gray,StrokThic = 33 , Fill = Brushes.Red};
             if(strokeColorPicker.SelectedColor != null)
             {
                 model.StrokeFill = new SolidColorBrush(strokeColorPicker.SelectedColor.Value);

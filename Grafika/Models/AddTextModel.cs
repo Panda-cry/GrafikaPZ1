@@ -14,6 +14,10 @@ namespace Grafika.Models
         private Brush background;
         private double size;
 
+        public AddTextModel()
+        {
+        }
+
         public AddTextModel(string text, Brush foregorund, Brush background, double size)
         {
             this.text = text;

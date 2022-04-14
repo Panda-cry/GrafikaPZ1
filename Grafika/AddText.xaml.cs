@@ -27,7 +27,25 @@ namespace Grafika
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AddTextModel model = new AddTextModel(text.Text, new SolidColorBrush(foreground.SelectedColor.Value), new SolidColorBrush(background.SelectedColor.Value), size.Value.Value);
+            AddTextModel model = new AddTextModel() { Text = "Neki Text",Size = 400, Background = Brushes.Red, Foregorund = Brushes.BlueViolet };
+
+            if(text.Text.Length != 0)
+            {
+                model.Text = text.Text;
+            }
+            if(size.Value != null)
+            {
+                model.Size = size.Value.Value;
+            }
+            if(foreground.SelectedColor != null)
+            {
+                model.Foregorund = new SolidColorBrush(foreground.SelectedColor.Value);
+            }
+            if(background.SelectedColor != null)
+            {
+                model.Background = new SolidColorBrush(background.SelectedColor.Value);
+            }
+
             MainWindow.addTextModel = model;
             this.Close();
         }
