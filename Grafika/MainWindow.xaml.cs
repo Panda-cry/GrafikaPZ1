@@ -130,9 +130,8 @@ namespace Grafika
             el.ShowDialog();
             Ellipse ellipse = null;
             Grid grid = null;
-            int counter = 0;
-
-            for (int i = 10254; i < canvas.Children.Count; i++)
+            int counter = canvas.Children.Count - collection.Count;
+            for (int i = counter; i < canvas.Children.Count; i++)
             {
                 try
                 {
@@ -144,7 +143,7 @@ namespace Grafika
                     }
                 }
                 catch (Exception) { }
-                counter = i;
+                
             }
 
          
@@ -234,8 +233,8 @@ namespace Grafika
             pol.ShowDialog();
             Polygon polygon = null;
             Grid grid = null;
-            int counter = 0;
-            for (int i = 10254; i < canvas.Children.Count; i++)
+            int counter = canvas.Children.Count - collection.Count;
+            for (int i = counter; i < canvas.Children.Count; i++)
             {
                 try
                 {
@@ -247,7 +246,6 @@ namespace Grafika
                     }
                 }
                 catch (Exception) { }
-                counter = i;
             }
        
             if (polygon == null)
